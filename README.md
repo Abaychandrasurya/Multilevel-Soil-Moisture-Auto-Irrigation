@@ -69,7 +69,7 @@ The connection is split into two parts: controlling the relay with the ESP32, an
 ---
 
 ### 📷 Hardware Setup
-![Hardware Setup](images/hardware-setup.jpg)
+![Hardware Setup](images/hardware-setup.png)
 
 ---
 
