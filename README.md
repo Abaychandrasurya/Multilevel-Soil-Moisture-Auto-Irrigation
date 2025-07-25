@@ -26,8 +26,52 @@ This project is a smart irrigation system built using an ESP32, soil moisture se
 -   Wi-Fi connection (e.g., mobile hotspot)
 
 ---
+
+## 🔌 Hardware Connections
+
+**Important:** The ESP32's logic level is **3.3V**. Connect VCC pins to **3.3V** unless specified otherwise. Always connect **GND** first.
+
+### 1. DHT22 Sensor (Temperature & Humidity)
+
+| DHT22 Pin | ESP32 Pin | Notes                                    |
+| :-------- | :-------- | :--------------------------------------- |
+| `VCC` / `+` | `3.3V`      |                                          |
+| `Data`      | `GPIO 4`  | Requires a 10kΩ pull-up resistor if not built-in |
+| `GND` / `-` | `GND`       |                                          |
+
+### 2. Soil Moisture Sensors
+
+All three sensors share the same power connections. Their analog signal pins connect to unique ADC pins on the ESP32.
+
+**Power Connections (for all 3 sensors):**
+-   **VCC** → ESP32 **3.3V**
+-   **GND** → ESP32 **GND**
+
+**Signal Pin Connections:**
+
+| Sensor Location | Sensor Pin | ESP32 Pin |
+| :-------------- | :--------- | :-------- |
+| Upper           | `A0`       | `GPIO 34` |
+| Mid             | `A0`       | `GPIO 35` |
+| Deeper          | `A0`       | `GPIO 32` |
+
+### 3. Relay Module & Water Pump
+
+The connection is split into two parts: controlling the relay with the ESP32, and the relay switching the high-voltage pump.
+
+#### **Relay Control Connections**
+
+| Relay Pin | ESP32 Pin | Notes                                 |
+| :-------- | :-------- | :------------------------------------ |
+| `VCC`     | `VIN`     | Provides 5V, required by most relays  |
+| `IN`      | `GPIO 5`  | Signal pin to trigger the relay       |
+| `GND`     | `GND`     |     
+---
+
 ### 📷 Hardware Setup
 ![Hardware Setup](images/hardware-setup.jpg)
+
+---
 
 ## 📲 Blynk Setup
 
